@@ -49,9 +49,9 @@ let maplocalleader = "`" "have effect on Python or html files
 
 
 "editing vimrc while coding in another file
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>ev :vsplit ~/.vim/vimrc<cr>
 "executing and sourcing the editing
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>sv :source ~/.vim/vimrc<cr>
 
 "delete a line 
 nnoremap . dd
