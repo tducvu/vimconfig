@@ -100,7 +100,7 @@ augroup filetype_python
 augroup END
 "}}}
 
-" VimScript file settings-------{{{
+" VimScript file settings(fold)-------{{{
 augroup filetype_vim
 	autocmd!
 	autocmd Filetype vim setlocal foldmethod=marker
