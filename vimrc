@@ -53,6 +53,9 @@ nnoremap <leader>ev :vsplit ~/.vim/vimrc<cr>
 "executing and sourcing the editing
 nnoremap <leader>sv :source ~/.vim/vimrc<cr>
 
+"open the previous buffer in a horizontal split
+nnoremap <leader>opb :execute "leftabove split " . bufname("#")<cr>
+
 "delete a line 
 nnoremap . dd
 
