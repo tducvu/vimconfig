@@ -103,6 +103,13 @@ augroup filetype_python
 augroup END
 "}}}
 
+"AUTOCOMMAND for C++----------{{{
+augroup filetype_cpp
+	autocmd!
+	autocmd Filetype cpp nnoremap <buffer> <localleader>s mqA;<esc>`q
+augroup END
+"}}}
+
 " VimScript file settings(fold)-------{{{
 augroup filetype_vim
 	autocmd!
