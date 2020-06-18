@@ -103,11 +103,13 @@ augroup filetype_python
 augroup END
 "}}}
 
-"AUTOCOMMAND for C++----------{{{
+"AUTOCOMMAND & Templates for C++----------{{{
 augroup filetype_cpp
 	autocmd!
 	autocmd Filetype cpp nnoremap <buffer> <localleader>s mqA;<esc>`q
 augroup END
+
+autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp
 "}}}
 
 " VimScript file settings(fold)-------{{{
@@ -116,4 +118,5 @@ augroup filetype_vim
 	autocmd Filetype vim setlocal foldmethod=marker
 augroup END
 "}}}
+
 
