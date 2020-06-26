@@ -1,20 +1,35 @@
 "PLUGIN-----{{{
-execute pathogen#infect()
-syntax on
-filetype plugin indent on 
+call plug#begin('~/.vim/plugged')
+
+Plug 'lervag/vimtex'
+  let g:tex_flavor='latex'
+  let g:vimtex_view_method='zathura'
+  let g:vimtex_quickfix_mode=0
+Plug 'KeitaNakamura/tex-conceal.vim'
+  set conceallevel=1
+  let g:tex_conceal='abdmg'
+Plug 'sirver/ultisnips'
+  let g:UltiSnipsExpandTrigger = '<tab>'
+  let g:UltiSnipsForwardTrigger = '<tab>'
+  let g:UltisnipsJumpBackwardTrigger = '<s-tab>'
+Plug 'dylanaraps/wal'
+
+call plug#end()
 "}}}
 
 "ColorScheme-----{{{
-colorscheme gruvbox 
+colorscheme wal
+set background=dark 
 "}}}
 
 "Basic Settings------{{{
-set bg=dark "dark background
 set ai	"Set auto indentation
 set number relativenumber
-set wrapmargin=5
-"set ruler "show cursor position
+set wrapmargin=5 
 set numberwidth=4 "how wide the column contains the number
+setlocal spell
+set spelllang=en_us
+hi Conceal ctermbg=none
 "}}}
 
 "STATUSLINES-------{{{
@@ -45,13 +60,16 @@ endfunction
 "MAPPING---------{{{
 
 let mapleader = ","
-let maplocalleader = "`" "have effect on Python or html files
+let maplocalleader = "`" "have effect on Python or HTML files
 
 
 "editing vimrc while coding in another file
 nnoremap <leader>ev :vsplit ~/.vim/vimrc<cr>
 "executing and sourcing the editing
 nnoremap <leader>sv :source ~/.vim/vimrc<cr>
+
+"save file
+nnoremap <leader>w :w<cr>
 
 "open the previous buffer in a horizontal split
 nnoremap <leader>opb :execute "leftabove split " . bufname("#")<cr>
@@ -92,6 +110,9 @@ onoremap in( :<c-u>normal! f(vi(<cr>
 
 "folding
 nnoremap ff za
+
+"check and fix spelling
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 "}}}
 
 "AUTOCOMMANDING for Python---------{{{
