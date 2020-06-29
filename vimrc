@@ -23,13 +23,19 @@ set background=dark
 "}}}
 
 "Basic Settings------{{{
-set ai	"Set auto indentation
-set number relativenumber
-set wrapmargin=5 
-set numberwidth=4 "how wide the column contains the number
-setlocal spell
-set spelllang=en_us
-hi Conceal ctermbg=none
+filetype plugin indent on  "determine the filetype extensions
+syntax enable 	           "turn syntax highlighting on
+set ai			   "Set auto indentation
+set number relativenumber  "relative number at current line
+set wrapmargin=5 	   "set margin
+set numberwidth=4 	   "how wide the column contains the number
+set spell		   "enable spell check
+set spelllang=en_us	   "the language of checking is English
+hi Conceal ctermbg=none	  
+set encoding=utf-8	   "show files as utf-8
+set showcmd		   "show current keybinding being executed
+set incsearch		   "automatically move to text as searching
+set mouse=a		   "enable mouse support in all modes
 "}}}
 
 "STATUSLINES-------{{{
@@ -78,7 +84,7 @@ nnoremap <leader>opb :execute "leftabove split " . bufname("#")<cr>
 nnoremap . dd
 
 "copy a line
-nnoremap cl v$y
+nnoremap yy 0v$y
 
 "exit insert/visual mode
 inoremap jk <Esc>
@@ -140,4 +146,8 @@ augroup filetype_vim
 augroup END
 "}}}
 
+"Search------------{{{
+highlight Search ctermbg=240 ctermfg=255
+highlight IncSearch ctermbg=255 ctermfg=240
 
+"}}}
