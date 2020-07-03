@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =7
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/home/ducvu/Documents/MathNotes/ODE-55H'
+let g:netrw_dirhist_8='/home/ducvu/.vim/plugged'
 let g:netrw_dirhist_7='/home/ducvu/.cpan'
 let g:netrw_dirhist_6='/home/ducvu/.oh-my-zsh'
 let g:netrw_dirhist_5='/home/ducvu/.vim/bundle/vim-live-latex-preview'

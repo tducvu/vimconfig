@@ -10,9 +10,11 @@ Plug 'KeitaNakamura/tex-conceal.vim'
   let g:tex_conceal='abdmg'
 Plug 'sirver/ultisnips'
   let g:UltiSnipsExpandTrigger = '<tab>'
-  let g:UltiSnipsForwardTrigger = '<tab>'
+  let g:UltiSnipsJumpForwardTrigger = '<tab>'
   let g:UltisnipsJumpBackwardTrigger = '<s-tab>'
 Plug 'dylanaraps/wal'
+Plug '907th/vim-auto-save'
+  let g:auto_save_silent = 1
 
 call plug#end()
 "}}}
@@ -25,17 +27,21 @@ set background=dark
 "Basic Settings------{{{
 filetype plugin indent on  "determine the filetype extensions
 syntax enable 	           "turn syntax highlighting on
-set ai			   "Set auto indentation
+set ai			           "Set auto indentation
 set number relativenumber  "relative number at current line
-set wrapmargin=5 	   "set margin
-set numberwidth=4 	   "how wide the column contains the number
-set spell		   "enable spell check
-set spelllang=en_us	   "the language of checking is English
+set wrapmargin=5 	       "set margin
+set numberwidth=4 	       "how wide the column contains the number
+set nocompatible
+set spell		           "enable spell check
+set spelllang=en_us	       "the language of checking is English
 hi Conceal ctermbg=none	  
-set encoding=utf-8	   "show files as utf-8
-set showcmd		   "show current keybinding being executed
-set incsearch		   "automatically move to text as searching
-set mouse=a		   "enable mouse support in all modes
+set encoding=utf-8	       "show files as utf-8
+set showcmd		           "show current keybinding being executed
+set hlsearch incsearch	   "automatically move to text as searching
+set mouse=a		           "enable mouse support in all modes
+set tabstop=4    	       "show existing tab with 4 spaces width
+set shiftwidth=4	       "use 4 spaces width when indenting with '>'
+set expandtab		       "press tab would insert 4 spaces
 "}}}
 
 "STATUSLINES-------{{{
@@ -74,8 +80,14 @@ nnoremap <leader>ev :vsplit ~/.vim/vimrc<cr>
 "executing and sourcing the editing
 nnoremap <leader>sv :source ~/.vim/vimrc<cr>
 
+"editing vim-tex ultisnips
+nnoremap <leader>eu :vsplit ~/.vim/UltiSnips/tex.snippets
+
 "save file
 nnoremap <leader>w :w<cr>
+
+"quit without saving
+nnoremap <leader>q :q!<cr>
 
 "open the previous buffer in a horizontal split
 nnoremap <leader>opb :execute "leftabove split " . bufname("#")<cr>
@@ -139,6 +151,14 @@ augroup END
 autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp
 "}}}
 
+"AUTOSAVE FOR TEX-FILE-----------{{{
+augroup filetype_tex
+	au!
+    au FileType tex let b:auto_save = 1
+	au FileType tex let b:auto_save_in_insert_mode = 0
+augroup END
+"}}}
+
 " VimScript file settings(fold)-------{{{
 augroup filetype_vim
 	autocmd!
@@ -151,3 +171,4 @@ highlight Search ctermbg=240 ctermfg=255
 highlight IncSearch ctermbg=255 ctermfg=240
 
 "}}}
+
