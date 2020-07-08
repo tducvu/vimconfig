@@ -81,7 +81,7 @@ nnoremap <leader>ev :vsplit ~/.vim/vimrc<cr>
 nnoremap <leader>sv :source ~/.vim/vimrc<cr>
 
 "editing vim-tex ultisnips
-nnoremap <leader>eu :vsplit ~/.vim/UltiSnips/tex.snippets
+nnoremap <leader>eu :vsplit ~/.vim/UltiSnips/tex.snippets<cr>
 
 "save file
 nnoremap <leader>w :w<cr>
