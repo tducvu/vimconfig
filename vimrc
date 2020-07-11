@@ -1,3 +1,17 @@
+"==================================================================
+"==================================================================
+" _    ________  _______  ______
+" | |  / /  _/  |/  / __ \/ ____/
+" | | / // // /|_/ / /_/ / /     
+" | |/ // // /  / / _, _/ /___   
+" |___/___/_/  /_/_/ |_|\____/   
+"
+"This is Duc's Vimscript and can be also found online at
+"github.com/blackbox2718/vimconfig
+"==================================================================
+"==================================================================
+
+
 "PLUGIN-----{{{
 call plug#begin('~/.vim/plugged')
 
@@ -130,7 +144,7 @@ onoremap in( :<c-u>normal! f(vi(<cr>
 nnoremap ff za
 
 "check and fix spelling
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+inoremap <localleader>f <c-g>u<Esc>[s1z=`]a<c-g>u
 "}}}
 
 "AUTOCOMMANDING for Python---------{{{
