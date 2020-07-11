@@ -446,11 +446,6 @@ snippet nabl "nabla" iA
 \nabla 
 endsnippet
 
-context "math()"
-snippet xx "cross" iA
-\times 
-endsnippet
-
 priority 100
 snippet ** "cdot" i
 \cdot 
@@ -469,7 +464,7 @@ endsnippet
 
 priority 200
 context "math()"
-snippet '(?<!\\)(alpha|beta|gamma|phi|theta|zeta|psi|delta|epsilon|mu|lambda)' "ln" rwA
+snippet '(?<!\\)(alpha|beta|gamma|phi|theta|zeta|psi|delta|epsilon|mu|lambda|sigma)' "ln" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -681,6 +676,10 @@ snippet letw "let omega" iA
 Let $\Omega \subset \C$ be open.
 endsnippet
 
+context "math()"
+snippet laplace "Laplace transform" i
+\laplace\\{$1\\}$0
+endsnippet
 
 snippet HH "H" iA
 \mathbb{H}
@@ -704,6 +703,11 @@ endsnippet
 
 snippet underl "underline" i
 \underline{$1}$0
+endsnippet
+
+context "math()"
+snippet space ", and space" iA
+\text{,} \hspace{.1in}
 endsnippet
 
 # vim:ft=snippets
