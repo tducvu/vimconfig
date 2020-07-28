@@ -458,7 +458,7 @@ endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!\\)(sin|cos|tan|cot|csc|sec|ln|log|exp|star|perp)' "ln" rwA
+snippet '(?<!\\)(sin|cos|tan|cot|csc|sec|ln|log|exp|star|perp|xi)' "ln" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -543,7 +543,7 @@ endsnippet
 
 
 context "math()"
-snippet cc "subset" Ai
+snippet cc "subset" i
 \subset 
 endsnippet
 
@@ -710,4 +710,25 @@ snippet space ", and space" iA
 \text{,} \hspace{.1in}
 endsnippet
 
-# vim:ft=snippets
+context "math()"
+snippet vec "vector" iA
+\vec{$1}$0
+endsnippet
+
+context "math()"
+snippet qed "black square" i
+\blacksquare
+endsnippet
+
+context "math()"
+snippet array "matrix with square bracket" iA
+\begin{array}{$1}
+	$0
+\end{array}
+endsnippet
+
+snippet textcolor "set text color" iA
+\textcolor{${1:color}}{${2:text}} $0
+endsnippet
+
+#vim:ft=snippets

@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =9
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/home/ducvu/Documents/MathNotes/LA-10'
 let g:netrw_dirhist_9='/home/ducvu/Documents/MathNotes/ODE-55H'
 let g:netrw_dirhist_8='/home/ducvu/.vim/plugged'
 let g:netrw_dirhist_7='/home/ducvu/.cpan'
