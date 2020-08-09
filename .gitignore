@@ -1,6 +1,6 @@
 autoload/
-bundle/
 colors/
 doc/
 templates/
 plugged/
+plugin/

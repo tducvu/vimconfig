@@ -17,16 +17,33 @@ Plug 'lervag/vimtex'
   let g:tex_flavor='latex'
   let g:vimtex_view_method='zathura'
   let g:vimtex_quickfix_mode=0
+
 Plug 'KeitaNakamura/tex-conceal.vim'
   set conceallevel=1
   let g:tex_conceal='abdmg'
+
 Plug 'sirver/ultisnips'
   let g:UltiSnipsExpandTrigger = '<tab>'
   let g:UltiSnipsJumpForwardTrigger = '<tab>'
-  let g:UltisnipsJumpBackwardTrigger = '<s-tab>'
+  let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
 Plug 'dylanaraps/wal'
+
 Plug '907th/vim-auto-save'
   let g:auto_save_silent = 1
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
+Plug 'junegunn/fzf.vim'
+  let g:fzf_preview_window = 'right:50%'
+
+Plug 'alvan/vim-closetag'
+  let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+  let g:closetag_filetypes = 'html,xhtml,phtml'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+  let g:airline_theme = 'minimalist'
 
 call plug#end()
 "}}}
@@ -54,31 +71,8 @@ set mouse=v                "enable mouse support in all modes
 set tabstop=4              "show existing tab with 4 spaces width
 set shiftwidth=4           "use 4 spaces width when indenting with '>'
 set expandtab              "press tab would insert 4 spaces
-"}}}
-
-"STATUSLINES-------{{{
-set laststatus=2
-set statusline=
-set statusline+=%#LineNr#
-set statusline+=\ %f					  "fileName
-set statusline+=%7*\[%n]                                  "buffernr
-"set statusline+=%1*\ %<%F\                                "File+path
-set statusline+=%2*\ %y\                                  "FileType
-set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      "Encoding
-set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
-set statusline+=%4*\ %{&ff}\                              "FileFormat (dos/unix..) 
-set statusline+=%5*\ %{&spelllang}\%{HighlightSearch()}\  "Spellanguage & Highlight on?
-set statusline+=%8*\ %=\ row:%l/%L\ (%03p%%)\             "Rownumber/total (%)
-set statusline+=%9*\ col:%03c\                            "Colnr
-set statusline+=%0*\ \ %m%r%w\ %P\ \                      "Modified? Readonly? Top/bot
-
-function! HighlightSearch()
-	if &hls
-		return 'H'
-	else
-		return ''
-	endif
-endfunction
+set pastetoggle=<F2>       "toggle paste mode(to avoid indentation when pasting)
+set showmode               "show mode
 "}}}
 	
 "MAPPING---------{{{
@@ -143,6 +137,11 @@ nnoremap ff za
 
 "check and fix spelling
 inoremap `` <c-g>u<Esc>[s1z=`]a<c-g>u
+
+"fzf mapping
+nnoremap <leader>ff :Files<cr>
+nnoremap <leader>fs :Snippets<cr>
+nnoremap <leader>fh :History<cr>
 "}}}
 
 "AUTOCOMMANDING for Python---------{{{
@@ -181,4 +180,11 @@ augroup END
 "Search------------{{{
 highlight Search ctermbg=240 ctermfg=255
 highlight IncSearch ctermbg=255 ctermfg=240
+function! HighlightSearch()
+	if &hls
+		return 'H'
+	else
+		return ''
+	endif
+endfunction
 "}}}
