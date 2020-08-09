@@ -15,7 +15,26 @@ def math():
 		return first != ignore
 	except StopIteration:
 		return False
+def create_row_placeholders(snip):
+    # retrieving singlee line from current string and treat it like tabstops
+    # count
+    placeholders_amount = int(snip.buffer[snip.line].strip())
+
+    # erase current line
+    snip.buffer[snip.line] = ''
+
+    # create anonymous snippet with expected content and number of tabstops
+    anon_snippet_body = ' & '.join(['$' + str(i+1)
+                                    for i in range(placeholders_amount)])
+
+    # expand anonymous snippet
+    snip.expand_anon(anon_snippet_body)
 endglobal
+
+post_jump "create_row_placeholders(snip)"
+snippet "(\d+)e" "latex table row variable" br
+`!p snip.rv = match.group(1)`
+endsnippet
 
 snippet template "Basic template" b
 \documentclass[a4paper]{article}
@@ -23,7 +42,6 @@ snippet template "Basic template" b
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
-\usepackage[dutch]{babel}
 \usepackage{amsmath, amssymb}
 
 
@@ -42,6 +60,31 @@ snippet template "Basic template" b
 
 \begin{document}
 	$0
+\end{document}
+endsnippet
+
+snippet notetemplate "Notes Template" b
+\input{../mathNotesPreamble}
+\input{../tcolorbox}
+\input{../toDoNotes}
+
+\title{$1}
+\author{Duc Vu \\ Taught by $2}
+\institute{$3}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\begin{abstract}
+	$4
+\end{abstract}
+\tableofcontents
+\newpage
+
+$0
+
 \end{document}
 endsnippet
 
@@ -458,7 +501,7 @@ endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!\\)(sin|cos|tan|cot|csc|sec|ln|log|exp|star|perp|xi)' "ln" rwA
+snippet '(?<!\\)(eta|sin|cos|tan|cot|csc|sec|ln|log|exp|star|perp|xi)' "ln" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -689,7 +732,7 @@ snippet DD "D" iA
 \mathbb{D}
 endsnippet
 
-snippet note "Note:" bA
+snippet note "Note:" b
 \emph{Note}:
 endsnippet
 
@@ -729,6 +772,14 @@ endsnippet
 
 snippet textcolor "set text color" iA
 \textcolor{${1:color}}{${2:text}} $0
+endsnippet
+
+snippet bigO "big O -- order" iA
+\mathcal{O}
+endsnippet
+
+snippet ubrace "under brace" iA
+\underbrace{$1}_{$2} $3
 endsnippet
 
 #vim:ft=snippets
