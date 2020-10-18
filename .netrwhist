@@ -1,12 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
-let g:netrw_dirhist_1='/home/ducvu/learnVimScript'
-let g:netrw_dirhist_0='/home/ducvu/Documents/MathNotes/LA-10'
-let g:netrw_dirhist_9='/home/ducvu/Documents/MathNotes/ODE-55H'
-let g:netrw_dirhist_8='/home/ducvu/.vim/plugged'
-let g:netrw_dirhist_7='/home/ducvu/.cpan'
-let g:netrw_dirhist_6='/home/ducvu/.oh-my-zsh'
-let g:netrw_dirhist_5='/home/ducvu/.vim/bundle/vim-live-latex-preview'
-let g:netrw_dirhist_4='/home/ducvu/.config/zathura'
-let g:netrw_dirhist_3='/home/ducvu/Documents/Latex/Math55H'
-let g:netrw_dirhist_2='/home/ducvu/.vim/VIMRC'
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/blackbox/.vim'
+let g:netrw_dirhist_3='/home/blackbox/.config/ranger'
+let g:netrw_dirhist_2='/home/blackbox/.config/sxhkd'
+let g:netrw_dirhist_1='/etc/X11/xinit'

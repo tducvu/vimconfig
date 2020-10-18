@@ -44,24 +44,29 @@ Plug 'alvan/vim-closetag'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
   let g:airline_theme = 'minimalist'
+  let g:airline_powerline_fonts=1
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+  let g:airline_symbols.linenr=''
 
 call plug#end()
 "}}}
 
 "ColorScheme-----{{{
-colorscheme wal
-set background=dark 
+colorscheme transparent
+"set background=dark 
 "}}}
 
 "Basic Settings------{{{
 filetype plugin indent on  "determine the filetype extensions
 syntax enable 	           "turn syntax highlighting on
 set ai                     "Set auto indentation
-set number relativenumber  "relative number at current line
+set number "relativenumber  "relative number at current line
 set wrapmargin=5           "set margin
 set numberwidth=4          "how wide the column contains the number
 set nocompatible
-set spell                  "enable spell check
+"set spell                 "enable spell check
 set spelllang=en_us        "the language of checking is English
 hi Conceal ctermbg=none
 set encoding=utf-8         "show files as utf-8
@@ -136,7 +141,7 @@ onoremap in( :<c-u>normal! f(vi(<cr>
 nnoremap ff za
 
 "check and fix spelling
-inoremap `` <c-g>u<Esc>[s1z=`]a<c-g>u
+inoremap `s <c-g>u<Esc>[s1z=`]a<c-g>u
 
 "fzf mapping
 nnoremap <leader>ff :Files<cr>
@@ -168,6 +173,7 @@ augroup filetype_tex
     au FileType tex let b:auto_save = 1
 	au FileType tex let b:auto_save_in_insert_mode = 0
 augroup END
+let g:tex_flavor = 'tex'
 "}}}
 
 " VimScript file settings(fold)-------{{{

@@ -36,42 +36,30 @@ snippet "(\d+)e" "latex table row variable" br
 `!p snip.rv = match.group(1)`
 endsnippet
 
-snippet template "Basic template" b
-\documentclass[a4paper]{article}
-
+snippet hwtemplate "Basic template" bA
+\documentclass{/home/blackbox/Documents/Latex/uni/duchw}
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{textcomp}
-\usepackage{amsmath, amssymb}
+\usepackage{mathtools,commath}
+\usepackage{amsmath,amsthm,amssymb}
 
-
-% figure support
-\usepackage{import}
-\usepackage{xifthen}
-\pdfminorversion=7
-\usepackage{pdfpages}
-\usepackage{transparent}
-\newcommand{\incfig}[1]{%
-	\def\svgwidth{\columnwidth}
-	\import{./figures/}{#1.pdf_tex}
-}
-
-\pdfsuppresswarningpagegroup=1
+\author{Duc Vu}
+\title{Math $1 -- Homework $2}
 
 \begin{document}
-	$0
+
+\\maketitle
+
+$0
+
 \end{document}
 endsnippet
 
 snippet notetemplate "Notes Template" b
-\input{../mathNotesPreamble}
-\input{../tcolorbox}
-\input{../toDoNotes}
+\input{../preamble/preambleV2}
 
-\title{$1}
-\author{Duc Vu \\ Taught by $2}
-\institute{$3}
-\date{\today}
+\title{\textbf{$1} \\\ \Large{University of California, Los Angeles}}
+\author{Duc Vu}
+\date{Fall 2020}
 
 \begin{document}
 
@@ -81,7 +69,23 @@ snippet notetemplate "Notes Template" b
 	$4
 \end{abstract}
 \tableofcontents
-\newpage
+\input{../formatting/sectionFormat}
+
+$0
+
+\end{document}
+endsnippet
+
+snippet hwtemplate "Homework Template" b
+\documentclass{/home/blackbox/Documents/Latex/uni/duchw}
+\usepackage{amsmath, mathtools, amsthm}
+
+\author{Duc Vu}
+\title{Math $1}
+
+\begin{document}
+
+\maketitle
 
 $0
 
@@ -119,7 +123,7 @@ endsnippet
 snippet fig "Figure environment" b
 \begin{figure}[${1:htpb}]
 	\centering
-	${2:\includegraphics[width=0.8\textwidth]{$3}}
+	${2:\includegraphics[width=0.6\textwidth]{$3}}
 	\caption{${4:$3}}
 	\label{fig:${5:${3/\W+/-/g}}}
 \end{figure}
@@ -191,6 +195,11 @@ snippet ex "example" bA
 \begin{example}
 	${1:${VISUAL}}
 \end{example}
+endsnippet
+
+context "math()"
+snippet binom "combination (n choose x)" iA
+\\binom{$1}{$2}$0
 endsnippet
 
 context "math()"
@@ -334,7 +343,7 @@ snippet conj "conjugate" iA
 endsnippet
 
 snippet sum "sum" w
-\sum_{n=${1:0}}^{${2:\infty}} ${3:a_n x^n}
+\sum_{k=${1:0}}^{${2:\infty}} ${3:a_n x^n}
 endsnippet
 
 snippet taylor "taylor" w
@@ -507,7 +516,7 @@ endsnippet
 
 priority 200
 context "math()"
-snippet '(?<!\\)(alpha|beta|gamma|phi|theta|zeta|psi|delta|epsilon|mu|lambda|sigma)' "ln" rwA
+snippet '(?<!\\)(alpha|beta|gamma|phi|theta|zeta|delta|epsilon|mu|lambda|sigma)' "ln" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -581,17 +590,23 @@ snippet set "set" wA
 endsnippet
 
 snippet || "mid" iA
- \mid 
+\mid 
 endsnippet
 
 
 context "math()"
-snippet cc "subset" i
-\subset 
+snippet cc "subseteq" iA
+\subseteq
 endsnippet
 
+context "math()"
+snippet pcc "proper subset" iA
+\subsetneq
+endsnippet
+
+context "math()"
 snippet notin "not in " iA
-\not\in 
+\notin 
 endsnippet
 
 context "math()"
@@ -608,15 +623,15 @@ snippet UU "cup" iA
 endsnippet
 
 snippet uuu "bigcup" iA
-\bigcup_{${1:i \in ${2: I}}} $0
+\bigcup^{$1}_{$2} $0
 endsnippet
 
 snippet nnn "bigcap" iA
-\bigcap_{${1:i \in ${2: I}}} $0
+\bigcap^{$1}_{$2} $0
 endsnippet
 
 snippet OO "emptyset" iA
-\O
+\emptyset
 endsnippet
 
 snippet hs "Horizontal space" iA
@@ -637,6 +652,10 @@ endsnippet
 
 snippet NN "natural" iA
 \mathbb{N}$0
+endsnippet
+
+snippet CC "complex" iA
+\mathbb{C}$0
 endsnippet
 
 snippet <! "normal" iA
@@ -674,10 +693,6 @@ snippet case "cases" wA
 \begin{cases}
 	$1
 \end{cases}
-endsnippet
-
-snippet SI "SI" iA
-\SI{$1}{$2}
 endsnippet
 
 snippet bigfun "Big function" iA
@@ -724,16 +739,8 @@ snippet laplace "Laplace transform" i
 \laplace\\{$1\\}$0
 endsnippet
 
-snippet HH "H" iA
-\mathbb{H}
-endsnippet
-
-snippet DD "D" iA
-\mathbb{D}
-endsnippet
-
 snippet note "Note:" b
-\emph{Note}:
+\underline{\emph{Note}}:
 endsnippet
 
 snippet section "section" b
@@ -780,6 +787,15 @@ endsnippet
 
 snippet ubrace "under brace" iA
 \underbrace{$1}_{$2} $3
+endsnippet
+
+snippet noin "no indent" bA
+\noindent
+$0
+endsnippet
+
+snippet := "conlon equal" iA
+\coloneqq
 endsnippet
 
 #vim:ft=snippets
