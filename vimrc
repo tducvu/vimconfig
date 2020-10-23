@@ -66,7 +66,7 @@ set number "relativenumber  "relative number at current line
 set wrapmargin=5           "set margin
 set numberwidth=4          "how wide the column contains the number
 set nocompatible
-"set spell                 "enable spell check
+set spell                 "enable spell check
 set spelllang=en_us        "the language of checking is English
 hi Conceal ctermbg=none
 set encoding=utf-8         "show files as utf-8
@@ -141,7 +141,7 @@ onoremap in( :<c-u>normal! f(vi(<cr>
 nnoremap ff za
 
 "check and fix spelling
-inoremap `s <c-g>u<Esc>[s1z=`]a<c-g>u
+inoremap <localleader>1 <c-g>u<Esc>[s1z=`]a<c-g>u
 
 "fzf mapping
 nnoremap <leader>ff :Files<cr>
