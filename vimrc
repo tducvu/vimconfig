@@ -49,13 +49,12 @@ Plug 'vim-airline/vim-airline-themes'
     let g:airline_symbols = {}
   endif
   let g:airline_symbols.linenr=''
-
 call plug#end()
 "}}}
 
 "ColorScheme-----{{{
-colorscheme transparent
-"set background=dark 
+colorscheme wal
+set background=dark 
 "}}}
 
 "Basic Settings------{{{
