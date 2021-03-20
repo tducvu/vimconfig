@@ -41,9 +41,10 @@ snippet hwtemplate "Basic template" bA
 \usepackage[utf8]{inputenc}
 \usepackage{mathtools,commath}
 \usepackage{amsmath,amsthm,amssymb}
+\usepackage{graphicx}
 
 \author{Duc Vu}
-\title{Math $1 -- Homework $2}
+\title{Math $1 -- $2}
 
 \begin{document}
 
@@ -54,38 +55,27 @@ $0
 \end{document}
 endsnippet
 
-snippet notetemplate "Notes Template" b
+snippet notetemplate "Notes Template" bA
 \input{../preamble/preambleV2}
+\graphicspath{{figures/}}
 
 \title{\textbf{$1} \\\ \Large{University of California, Los Angeles}}
 \author{Duc Vu}
-\date{Fall 2020}
+\date{$2}
 
 \begin{document}
 
 \maketitle
 \thispagestyle{empty}
 \begin{abstract}
-	$4
+	$3
 \end{abstract}
 \tableofcontents
+\listoftheorems[ignoreall,show={theorem}]
+\renewcommand{\listtheoremname}{List of Definitions}
+\listoftheorems[ignoreall,show={definition}]
+\newpage
 \input{../formatting/sectionFormat}
-
-$0
-
-\end{document}
-endsnippet
-
-snippet hwtemplate "Homework Template" b
-\documentclass{/home/blackbox/Documents/Latex/uni/duchw}
-\usepackage{amsmath, mathtools, amsthm}
-
-\author{Duc Vu}
-\title{Math $1}
-
-\begin{document}
-
-\maketitle
 
 $0
 
@@ -121,16 +111,27 @@ snippet table "Table environment" b
 endsnippet
 
 snippet fig "Figure environment" b
-\begin{figure}[${1:htpb}]
+\begin{figure}[H]
 	\centering
-	${2:\includegraphics[width=0.6\textwidth]{$3}}
-	\caption{${4:$3}}
-	\label{fig:${5:${3/\W+/-/g}}}
+	\includegraphics[width=0.$1\textwidth]{fig$2}
 \end{figure}
+$0
 endsnippet
 
-snippet enum "Enumerate" bA
+snippet enum "Enumerate" b
 \begin{enumerate}
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet enumi "Enumerate with roman" bA
+\begin{enumerate}[i)]
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet enuma "Enumerate with alph" bA
+\begin{enumerate}[a)]
 	\item $0
 \end{enumerate}
 endsnippet
@@ -141,14 +142,14 @@ snippet item "Itemize" bA
 \end{itemize}
 endsnippet
 
-snippet desc "Description" b
-\begin{description}
-	\item[$1] $0
-\end{description}
-endsnippet
-
 snippet pac "Package" b
 \usepackage[${1:options}]{${2:package}}$0
+endsnippet
+
+priority 20
+context "math()"
+snippet prescript "sub/sup before/after" iA
+\prescript{c}{}{$1}^{}_{} $0
 endsnippet
 
 snippet => "implies" Ai
@@ -243,27 +244,6 @@ snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
 endsnippet
 
 
-snippet sympy "sympyblock " w
-sympy $1 sympy$0
-endsnippet
-
-priority 10000
-snippet 'sympy(.*)sympy' "sympy" wr
-`!p
-from sympy import *
-x, y, z, t = symbols('x y z t')
-k, m, n = symbols('k m n', integer=True)
-f, g, h = symbols('f g h', cls=Function)
-init_printing()
-snip.rv = eval('latex(' + match.group(1).replace('\\', '').replace('^', '**').replace('{', '(').replace('}', ')') + ')')
-`
-endsnippet
-
-priority 1000
-snippet math "mathematicablock" w
-math $1 math$0
-endsnippet
-
 priority 10000
 snippet 'math(.*)math' "math" wr
 `!p
@@ -278,18 +258,8 @@ snippet == "equals" iA
 &= $1 \\\\
 endsnippet
 
-snippet != "equals" iA
+snippet != "not equals" iA
 \neq 
-endsnippet
-
-context "math()"
-snippet ceil "ceil" iA
-\left\lceil $1 \right\rceil $0
-endsnippet
-
-context "math()"
-snippet floor "floor" iA
-\left\lfloor $1 \right\rfloor$0
 endsnippet
 
 snippet pmat "pmat" iA
@@ -306,23 +276,23 @@ endsnippet
 
 context "math()"
 snippet () "left( right)" iA
-\left( ${1:${VISUAL}} \right) $0
+\left( ${1:${VISUAL}} \right)$0
 endsnippet
 
 snippet lr "left( right)" i
-\left( ${1:${VISUAL}} \right) $0
+\left( ${1:${VISUAL}} \right)$0
 endsnippet
 
 snippet lr( "left( right)" i
-\left( ${1:${VISUAL}} \right) $0
+\left( ${1:${VISUAL}} \right)$0
 endsnippet
 
 snippet lr| "left| right|" i
-\left| ${1:${VISUAL}} \right| $0
+\left| ${1:${VISUAL}} \right|$0
 endsnippet
 
 snippet lr{ "left\{ right\}" i
-\left\\{ ${1:${VISUAL}} \right\\} $0
+\left\\{ ${1:${VISUAL}} \right\\}$0
 endsnippet
 
 snippet lrb "left\{ right\}" i
@@ -343,7 +313,11 @@ snippet conj "conjugate" iA
 endsnippet
 
 snippet sum "sum" w
-\sum_{k=${1:0}}^{${2:\infty}} ${3:a_n x^n}
+\sum_{k=${1:1}}^{${2:\infty}} ${3:a_n}
+endsnippet
+
+snippet ssum "sum" w
+\sum_{n \ge ${1:1}}${2:a_n}
 endsnippet
 
 snippet taylor "taylor" w
@@ -354,8 +328,14 @@ snippet lim "limit" w
 \lim_{${1:n} \to ${2:\infty}} 
 endsnippet
 
+context "math()"
 snippet limsup "limsup" w
 \limsup_{${1:n} \to ${2:\infty}} 
+endsnippet
+
+context "math()"
+snippet liminf "liminf" w
+\liminf_{${1:n} \to ${2:\infty}} 
 endsnippet
 
 snippet prod "product" w
@@ -363,7 +343,12 @@ snippet prod "product" w
 endsnippet
 
 context "math()"
-snippet partial "d/dx" wA
+snippet seq "sequence" wA
+\left\\{ $1_$2 \right\\}_{$2 \ge 1} $0
+endsnippet
+
+context "math()"
+snippet partial "d/dx" w
 \frac{\partial ${1:V}}{\partial ${2:x}} $0
 endsnippet
 
@@ -401,10 +386,6 @@ snippet oo "\infty" iA
 \infty
 endsnippet
 
-snippet rij "mrij" i
-(${1:x}_${2:n})_{${3:$2}\\in${4:\\N}}$0
-endsnippet
-
 snippet <= "leq" iA
 \le 
 endsnippet
@@ -414,7 +395,7 @@ snippet >= "geq" iA
 endsnippet
 
 context "math()"
-snippet EE "geq" iA
+snippet EE "there exists" iA
 \exists 
 endsnippet
 
@@ -464,10 +445,6 @@ snippet xmm "x" iA
 x_{m}
 endsnippet
 
-snippet R0+ "R0+" iA
-\\R_0^+
-endsnippet
-
 snippet tikz "Plot" w
 \begin{figure}[$1]
 	\centering
@@ -479,18 +456,9 @@ snippet tikz "Plot" w
 \end{figure}
 endsnippet
 
-snippet nn "Tikz node" w
-\node[$5] (${1/[^0-9a-zA-Z]//g}${2}) ${3:at (${4:0,0}) }{$${1}$};
-$0
-endsnippet
-
 context "math()"
 snippet mcal "mathcal" iA
 \mathcal{$1}$0
-endsnippet
-
-snippet lll "l" iA
-\ell
 endsnippet
 
 context "math()"
@@ -510,7 +478,7 @@ endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!\\)(eta|sin|cos|tan|cot|csc|sec|ln|log|exp|star|perp|xi)' "ln" rwA
+snippet '(?<!\\)(eta|sin|cos|tan|cot|csc|sec|ln|log|exp|star|perp|xi|omega)' "ln" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -541,8 +509,8 @@ endsnippet
 
 priority 200
 context "math()"
-snippet --> "rightarrow" iA
-\rightarrow 
+snippet --> "longrightarrow" iA
+\longrightarrow 
 endsnippet
 
 priority 200
@@ -589,13 +557,8 @@ snippet set "set" wA
 \\{$1\\} $0
 endsnippet
 
-snippet || "mid" iA
-\mid 
-endsnippet
-
-
 context "math()"
-snippet cc "subseteq" iA
+snippet cc "subset" iA
 \subseteq
 endsnippet
 
@@ -623,11 +586,11 @@ snippet UU "cup" iA
 endsnippet
 
 snippet uuu "bigcup" iA
-\bigcup^{$1}_{$2} $0
+\bigcup_{$1}^{$2} $0
 endsnippet
 
 snippet nnn "bigcap" iA
-\bigcap^{$1}_{$2} $0
+\bigcap_{$1}^{$2} $0
 endsnippet
 
 snippet OO "emptyset" iA
@@ -656,14 +619,6 @@ endsnippet
 
 snippet CC "complex" iA
 \mathbb{C}$0
-endsnippet
-
-snippet <! "normal" iA
-\triangleleft 
-endsnippet
-
-snippet <> "hokje" iA
-\diamond 
 endsnippet
 
 snippet sect "section" i
@@ -695,11 +650,15 @@ snippet case "cases" wA
 \end{cases}
 endsnippet
 
-snippet bigfun "Big function" iA
-\begin{align*}
-	$1: $2 &\longrightarrow $3 \\\\
-	$4 &\longmapsto $1($4) = $0
-.\end{align*}
+context "math()"
+snippet rcase "rcases" wA
+\begin{rcases}
+	$1
+\end{rcases}
+endsnippet
+
+snippet case "cases" i
+\textbf{\underline{Case $1:}} $0
 endsnippet
 
 snippet cvec "column vector" iA
@@ -720,18 +679,14 @@ endsnippet
 
 priority 10
 context "math()"
-snippet "hat" "hat" riA
+snippet hat "hat" iA
 \hat{$1}$0
 endsnippet
 
-priority 100
+priority 20
 context "math()"
-snippet "([a-zA-Z])hat" "hat" riA
-\hat{`!p snip.rv=match.group(1)`}
-endsnippet
-
-snippet letw "let omega" iA
-Let $\Omega \subset \C$ be open.
+snippet widehat "widehat" iA
+\widehat{$1}$0
 endsnippet
 
 context "math()"
@@ -781,10 +736,6 @@ snippet textcolor "set text color" iA
 \textcolor{${1:color}}{${2:text}} $0
 endsnippet
 
-snippet bigO "big O -- order" iA
-\mathcal{O}
-endsnippet
-
 snippet ubrace "under brace" iA
 \underbrace{$1}_{$2} $3
 endsnippet
@@ -798,9 +749,24 @@ snippet := "conlon equal" iA
 \coloneqq
 endsnippet
 
+snippet figz "tikzit" bA
+\ctikzfig{fig$1}
+$0
+endsnippet
+
 context "math()"
-snippet scr "math script" iA
-\mathscr{$1}$0
+snippet <> "inner product space" iA
+\langle $1 \rangle $0
+endsnippet
+
+context "math()"
+snippet ovs "overset -- symbol on top" iA
+\overset{$1}{$2} $0
+endsnippet
+
+context "math()"
+snippet ocal "error term" iA
+\mathcal{O}($1) $0
 endsnippet
 
 #vim:ft=snippets
