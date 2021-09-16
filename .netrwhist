@@ -1,6 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
-let g:netrw_dirhist_4='/home/blackbox/.vim'
-let g:netrw_dirhist_3='/home/blackbox/.config/ranger'
-let g:netrw_dirhist_2='/home/blackbox/.config/sxhkd'
-let g:netrw_dirhist_1='/etc/X11/xinit'
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/blackbox/Documents/mathNotes/preamble'
+let g:netrw_dirhist_4='/etc/fonts/conf.d'
+let g:netrw_dirhist_3='/home/blackbox/.config'
+let g:netrw_dirhist_2='/home/blackbox/Documents/mathNotes/preamble'
+let g:netrw_dirhist_1='/home/blackbox/Documents/UCLA/PIC16B/tducvu.github.io/_plugins'
+let g:netrw_dirhist_0='/home/blackbox/Documents/UCLA/PIC16B/tducvu.github.io/_sass'
+let g:netrw_dirhist_9='/home/blackbox/Documents/UCLA/PIC16B/tducvu.github.io/_site'
+let g:netrw_dirhist_8='/home/blackbox/Documents/UCLA/PIC16B/tducvu.github.io/_posts'
+let g:netrw_dirhist_7='/home/blackbox/.vim/UltiSnips'
+let g:netrw_dirhist_6='/home/blackbox/.vim'

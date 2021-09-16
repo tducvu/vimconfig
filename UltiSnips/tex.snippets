@@ -57,6 +57,7 @@ endsnippet
 
 snippet notetemplate "Notes Template" bA
 \input{../preamble/preambleV2}
+\input{../preamble/macros}
 \graphicspath{{figures/}}
 
 \title{\textbf{$1} \\\ \Large{University of California, Los Angeles}}
@@ -148,12 +149,12 @@ endsnippet
 
 priority 20
 context "math()"
-snippet prescript "sub/sup before/after" iA
+snippet bcompl "sub/sup before/after" iA
 \prescript{c}{}{$1}^{}_{} $0
 endsnippet
 
 snippet => "implies" Ai
-\implies
+\implies 
 endsnippet
 
 snippet =< "implied by" Ai
@@ -354,7 +355,7 @@ endsnippet
 
 context "math()"
 snippet r2 "\sqrt{}" iA
-\sqrt{${1:${VISUAL}}} $0
+\sqrt{${1:${VISUAL}}}$0
 endsnippet
 
 context "math()"
@@ -462,7 +463,22 @@ snippet mcal "mathcal" iA
 endsnippet
 
 context "math()"
-snippet nabl "nabla" iA
+snippet mscr "mathscr" iA
+\mathscr{$1}$0
+endsnippet
+
+context "math()"
+snippet mbf "mathbf" iA
+\mathbf{$1}$0
+endsnippet
+
+context "math()"
+snippet MU "bold mu" iA
+\boldsymbol{\mu}
+endsnippet
+
+context "math()"
+snippet nab "nabla" iA
 \nabla 
 endsnippet
 
@@ -478,7 +494,7 @@ endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!\\)(eta|sin|cos|tan|cot|csc|sec|ln|log|exp|star|perp|xi|omega)' "ln" rwA
+snippet '(?<!\\)(sin|cos|tan|cot|csc|sec|ln|log|exp|star|perp|xi|omega)' "ln" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -527,11 +543,6 @@ endsnippet
 context "math()"
 snippet invs "inverse" iA
 ^{-1}
-endsnippet
-
-context "math()"
-snippet compl "complement" iA
-^{c}
 endsnippet
 
 context "math()"
@@ -597,7 +608,7 @@ snippet OO "emptyset" iA
 \emptyset
 endsnippet
 
-snippet hs "Horizontal space" iA
+snippet hs "Horizontal space" i
 \hspace{.$1in}$0
 endsnippet
 
@@ -741,8 +752,7 @@ snippet ubrace "under brace" iA
 endsnippet
 
 snippet noin "no indent" bA
-\noindent
-$0
+\noindent$0
 endsnippet
 
 snippet := "conlon equal" iA
@@ -762,6 +772,11 @@ endsnippet
 context "math()"
 snippet ovs "overset -- symbol on top" iA
 \overset{$1}{$2} $0
+endsnippet
+
+context "math()"
+snippet uds "underset -- symbol on bottom" iA
+\underset{$1}{$2} $0
 endsnippet
 
 context "math()"

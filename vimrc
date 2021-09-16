@@ -77,6 +77,7 @@ set shiftwidth=4           "use 4 spaces width when indenting with '>'
 set expandtab              "press tab would insert 4 spaces
 set pastetoggle=<F2>       "toggle paste mode(to avoid indentation when pasting)
 set showmode               "show mode
+set clipboard=unnamedplus  "set clipboard for copy/paste
 "}}}
 	
 "MAPPING---------{{{
